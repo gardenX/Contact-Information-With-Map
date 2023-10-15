@@ -32,6 +32,20 @@ func viewContact(person map[string]string) {
 
 }
 
+func searchContact(person map[string]string) {
+	fmt.Print("Masukan Nama : ")
+	var namaContact string
+	fmt.Scan(&namaContact)
+
+	var value, isExit = person[namaContact]
+
+	if isExit {
+		fmt.Println("Nomor Kontak", namaContact, "Adalah", value)
+	} else {
+		fmt.Println("Nama Kontak ", namaContact, "Tidak Ditemukan ! ")
+	}
+}
+
 func delContact(person map[string]string) {
 	fmt.Print("Masukan Nama : ")
 	var namaContact string
@@ -74,11 +88,7 @@ func main() {
 				fmt.Println("")
 				fmt.Println("")
 			case 2:
-				fmt.Print("Masukan Nama : ")
-				var namaContact string
-				fmt.Scan(&namaContact)
-
-				fmt.Println("Nomor Kontak", namaContact, person[namaContact])
+				searchContact(person)
 				fmt.Println("")
 				fmt.Println("")
 			}
