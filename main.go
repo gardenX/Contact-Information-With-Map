@@ -7,6 +7,7 @@ func viewAct() {
 	fmt.Println("Silahkan pilih hal yang ingin anda lakukan")
 	fmt.Println("1. Tambah Kontak")
 	fmt.Println("2. Cari Kontak")
+	fmt.Println("3. Hapus Kontak")
 }
 
 func addContact(person map[string]string) map[string]string {
@@ -31,6 +32,16 @@ func viewContact(person map[string]string) {
 
 }
 
+func delContact(person map[string]string) {
+	fmt.Print("Masukan Nama : ")
+	var namaContact string
+	fmt.Scan(&namaContact)
+
+	delete(person, namaContact)
+
+	fmt.Println("Kontak Dengan Nama", namaContact, "Berhasil Dihapus ! ")
+}
+
 func main() {
 	person := make(map[string]string)
 
@@ -45,6 +56,8 @@ func main() {
 		case 1:
 			person = addContact(person)
 			viewContact(person)
+			fmt.Println("")
+			fmt.Println("")
 		case 2:
 			fmt.Println("Cari Berdasarkan : ")
 			fmt.Println("1. Semua Kotak")
@@ -58,14 +71,21 @@ func main() {
 			switch grupView {
 			case 1:
 				viewContact(person)
+				fmt.Println("")
+				fmt.Println("")
 			case 2:
 				fmt.Print("Masukan Nama : ")
 				var namaContact string
 				fmt.Scan(&namaContact)
 
-				fmt.Println(person[namaContact])
+				fmt.Println("Nomor Kontak", namaContact, person[namaContact])
+				fmt.Println("")
+				fmt.Println("")
 			}
-
+		case 3:
+			delContact(person)
+			fmt.Println("")
+			fmt.Println("")
 		}
 	}
 }
